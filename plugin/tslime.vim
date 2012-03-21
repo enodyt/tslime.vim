@@ -57,7 +57,11 @@ endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-vmap <C-c><C-c> "ry :call Send_to_Tmux(@r)<CR>
-nmap <C-c><C-c> vip<C-c><C-c>
+" Custom <Leader> for the tslime plugin
+if !exists('g:tslime_leader')
+  let g:tslime_leader = '<C-c>'
+endif
 
-nmap <C-c>v :call <SID>Tmux_Vars()<CR>
+execute 'vmap '.g:tslime_leader.'<C-c> "ry :call Send_to_Tmux(@r)<CR>'
+execute 'nmap '.g:tslime_leader.'<C-c> vip'.g:tslime_leader.'<C-c>'
+execute 'nmap '.g:tslime_leader.'<C-c>v :call <SID>Tmux_Vars()<CR>'
